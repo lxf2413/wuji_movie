@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui-slide.css" />
+    <style>
+        .media-list{
+          margin:5px 5px;border-bottom: 1px solid gray;
+        }
+    </style>
+</header>
+<body>
+<div id="head_slide">
+    <div class="aui-slide-wrap" >
+        <div class="aui-slide-node bg-dark">
+            <img src="../image/l1.png" />
+        </div>
+        <div class="aui-slide-node bg-dark">
+            <img src="../image/l2.png" />
+        </div>
+        <div class="aui-slide-node bg-dark">
+            <img src="../image/l3.png" />
+        </div>
+    </div>
+    <div class="aui-slide-page-wrap"><!--分页容器--></div>
+</div>
+<div class="aui-content">
+     <h3><i class="aui-iconfont aui-icon-like aui-text-danger"></i>热门推荐</h1>
+     <section class="aui-grid aui-margin-b-10">
+        <div class="row">
+          <div class="aui-col-xs-6">
+            <div class="aui-card-list media-list">
+                <div class="aui-card-list-header">
+                    卡片布局头部区域
+                </div>
+                <div class="aui-card-list-content">
+                    <img src="../image/l2.png" />
+                </div>
+                <div class="aui-card-list-footer aui-font-size-12 aui-pull-right">
+                    <div><i class="aui-iconfont aui-icon-display aui-font-size-12"></i> 888</div>
+                </div>
+            </div>
+          </div>
+          <div class="aui-col-xs-6">
+            <div class="aui-card-list media-list">
+              <div class="aui-card-list-header">
+                  卡片布局头部区域
+              </div>
+              <div class="aui-card-list-content">
+                  <img src="../image/l2.png" />
+              </div>
+              <div class="aui-card-list-footer aui-font-size-12 aui-pull-right">
+                  <div><i class="aui-iconfont aui-icon-display aui-font-size-12"></i> 888</div>
+              </div>
+            </div>
+          </div>
+          <div class="aui-col-xs-6">
+            <div class="aui-card-list media-list">
+              <div class="aui-card-list-header">
+                  卡片布局头部区域
+              </div>
+              <div class="aui-card-list-content">
+                  <img src="../image/l2.png" />
+              </div>
+              <div class="aui-card-list-footer aui-font-size-12 aui-pull-right">
+                  <div><i class="aui-iconfont aui-icon-display aui-font-size-12"></i> 888</div>
+              </div>
+            </div>
+          </div>
+          <div class="aui-col-xs-6">
+            <div class="aui-card-list media-list">
+              <div class="aui-card-list-header">
+                  卡片布局头部区域
+              </div>
+              <div class="aui-card-list-content">
+                  <img src="../image/l2.png" />
+              </div>
+              <div class="aui-card-list-footer aui-font-size-12 aui-pull-right">
+                  <div><i class="aui-iconfont aui-icon-display aui-font-size-12"></i> 888</div>
+              </div>
+            </div>
+          </div>
+        </div>
+     </section>
+</div>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/aui-slide.js"></script>
+<script type='text/javascript'>
+    var head_slide = new auiSlide({
+      container:$api.byId('head_slide'),
+      'height':150,
+      'speed':300,
+      'autoPlay':3000,
+      'loop':true,
+      'pageShow':true,
+      'pageStyle':'dot',
+      'dotPosition':'center'
+    });
+</script>
+</body>
+</html>

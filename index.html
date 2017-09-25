@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="./css/aui.css" />
+</head>
+<body>
+<header class="aui-bar aui-bar-nav" id="header">
+  <a class="aui-pull-left aui-btn aui-btn-outlined">
+      <span class="aui-iconfont aui-icon-menu"></span>
+  </a>
+  <div class="aui-title">无极影院</div>
+  <a class="aui-pull-right aui-btn aui-btn-outlined">
+      <span class="aui-iconfont aui-icon-search"></span>
+  </a>
+</header>
+<footer class="aui-bar aui-bar-tab" id="footer">
+  <div class="aui-bar-tab-item aui-active" id="menuitem0" onclick="changeViewModel(this,'无极影院',0)">
+      <i class="aui-iconfont aui-icon-home"></i>
+      <div class="aui-bar-tab-label">首页</div>
+  </div>
+  <div class="aui-bar-tab-item" id="menuitem1" onclick="changeViewModel(this,'热播',1)">
+      <i class="aui-iconfont aui-icon-star"></i>
+      <div class="aui-bar-tab-label">热播</div>
+  </div>
+  <div class="aui-bar-tab-item" id="menuitem2" onclick="changeViewModel(this,'分类',2)">
+      <i class="aui-iconfont aui-icon-menu"></i>
+      <div class="aui-bar-tab-label">分类</div>
+  </div>
+  <div class="aui-bar-tab-item" id="menuitem3" onclick="changeViewModel(this,'我的',3)">
+      <div class="aui-dot"></div>
+      <i class="aui-iconfont aui-icon-my"></i>
+      <div class="aui-bar-tab-label">我的</div>
+  </div>
+</footer>
+</body>
+<script type="text/javascript" src="./script/api.js"></script>
+<script>
+
+apiready = function(){
+  var header = $api.byId('header');
+  api.setStatusBarStyle({
+            style: 'light'
+        });
+  var header_h = $api.offset($api.byId('header')).h;
+  var menu_h  = $api.offset($api.byId('footer')).h;
+  var content_h = api.winHeight-menu_h-header_h;
+  api.openFrameGroup({
+      name:'main',
+      scrollEnabled:false,
+      rect: {
+          x: 0,
+          y: header_h,
+          w: 'auto',
+          h: content_h
+      },
+      pageParam: {
+          name: 'test'
+      },
+      index:0,
+      preload:4,
+      frames:[{
+        name:'无极影院',
+        url:'./html/main.html',
+        bounces:false
+      },{
+        name:'热播',
+        url:'./html/hot.html',
+        bounces:false
+      },{
+        name:'分类',
+        url:'./html/class.html',
+        bounces:false
+      },{
+        name:'我的',
+        url:'./html/member.html',
+        bounces:false
+      }]
+  },function(ret,err){
+      var footer = $api.byId('footer');
+      var item = $api.dom(footer,'.aui-bar-tab-item.aui-active');
+      $api.removeCls(item, 'aui-active');
+      $api.addCls($api.byId('menuitem'+ret.index), 'aui-active');
+      $api.text($api.dom('.aui-title'),ret.name);
+  });
+}
+function changeViewModel(obj,pname,num){
+  var footer = $api.byId('footer');
+  var item = $api.dom(footer,'.aui-bar-tab-item.aui-active');
+  $api.removeCls(item, 'aui-active');
+  $api.addCls(obj, 'aui-active');
+  $api.text($api.dom('.aui-title'),pname);
+  api.setFrameGroupIndex({
+      name: 'main',
+      index: num,
+      scroll: true
+  });
+}
+</script>
+</html>
